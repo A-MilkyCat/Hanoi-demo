@@ -71,7 +71,7 @@ html, body{
     animation-duration: 5s;
     animation-iteration-count: 1;
 }
-#move_button{
+.auto_move{
     width: 50px;
     height: 50px;
 }
