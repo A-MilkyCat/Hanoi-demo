@@ -8,13 +8,15 @@ function check_num(){
     num = document.getElementById("num").value;
     document.getElementById("num").value = "";
     try{
+        var k = 0;
         if (isNaN(num)==true) throw "It's not a number";
         if (num=="") throw "Null";
-        num = Number(num);
-        if (num<1) throw "Too small"
-        if (num>15) throw "Too big";
+        k = Number(num);
+        if (k<1) throw "Too small"
+        if (k>15) throw "Too big";
     }catch(respond){
         document.getElementById("show_respond").innerHTML = respond;
+        num = latest_usable_num;
         return ;
     }
     document.getElementById("show_respond").innerHTML = "";
@@ -23,7 +25,7 @@ function check_num(){
         var brick = document.getElementById(`brick${i}`);
         brick.remove();
     }
-    latest_usable_num = num;
+    latest_usable_num = Number(num);
     var box = document.getElementById("box1");
     //box.empty();
     for (var i=num;i>=1;i--){
