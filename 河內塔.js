@@ -100,7 +100,7 @@ function _move(n){
                 is_moving = false;
                 isauto_moving = false;
             }
-        },1000*(t-1)+1000);
+        },100*(t-1)+100);
         t ++;
     }
 }
