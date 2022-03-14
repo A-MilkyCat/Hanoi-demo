@@ -1,10 +1,13 @@
 var latest_usable_num = 0;
 var stuff = new Array; 
 var stuff_index = new Array;
-var step = 1, is_moving = false, isauto_moving = false;
+var step = 1, is_moving = false;
 var every_step = new Array;
 //  步驟.給.收  為一數字 ex 第一步 1給3 --> 113
 function check_num(){ 
+    if (is_moving == true){
+        return;
+    }
     var num = document.getElementById("num").value;
     document.getElementById("num").value = "";
     try{
@@ -78,8 +81,7 @@ function pre_move(f1, f2, f3, n){
 }
 
 function auto_move(){//onclick buttom
-    if (step != 1){
-        document.getElementById("show_respond").innerText = "初始狀態才可自動";
+    if (is_moving == true){
         return;
     }
     if (latest_usable_num == 0){
@@ -87,27 +89,22 @@ function auto_move(){//onclick buttom
         return;
     }
     is_moving = true;
-    isauto_moving = true;
     _move(latest_usable_num);
 }
 
 function _move(n){
-    var t = 1;
-    while (t < Math.pow(2, n)){
+    for (var t = 0; t<=Math.pow(2, n) - step; t ++){
         setTimeout(function(){
             Next();
             if (step >= Math.pow(2, latest_usable_num)){
                 is_moving = false;
-                isauto_moving = false;
             }
-        },100*(t-1)+100);
-        t ++;
+        },100*(t)+100);
     }
 }
 
 function Prev(){
     if (is_moving == true){
-        document.getElementById("show_respond").innerText = "Box is moving";
         return;
     }
     if (step <= 1){
@@ -130,10 +127,6 @@ function Prev(){
 }
 function Next(){
     var respond;
-    if (is_moving == true && isauto_moving != true){
-        document.getElementById("show_respond").innerText = "Box is moving";
-        return;
-    }
     if (step >= Math.pow(2, latest_usable_num)){
         return;
     }else{
