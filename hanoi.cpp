@@ -49,16 +49,16 @@ void move(int f1,int f2,int f3,int n){
 }
 int main(){
 	int n;
-	while (cin >> n ){
-		stuff[1].clear(); 
-		stuff[2].clear();
-		stuff[3].clear();
-		for (int i=n;i>=1;i--){
-			stuff[1].push_back(i);
-		}
-		ptABC();
-		move(1,2,3,n);
+	printf("­Ó¼Æ:");
+	cin >> n;
+	stuff[1].clear(); 
+	stuff[2].clear();
+	stuff[3].clear();
+	for (int i=n;i>=1;i--){
+		stuff[1].push_back(i);
 	}
+	ptABC();
+	move(1,2,3,n);
 	return 0;
 } 
 
