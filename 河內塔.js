@@ -3,6 +3,7 @@ var stuff = new Array;
 var stuff_index = new Array;
 var step = 1, is_moving = false;
 var every_step = new Array;
+var interval = 100;
 //  步驟.給.收  為一數字 ex 第一步 1給3 --> 113
 function check_num(){ 
     if (is_moving == true){
@@ -31,7 +32,7 @@ function check_num(){
     var box = document.getElementById("box1");
     //box.empty();
     for (var i=latest_usable_num;i>=1;i--){
-        var brick = document.createElement("div").cloneNode(true);//important!!!
+        var brick = document.createElement("div");
         brick.className = "brick";
         brick.id = `brick${i}`;
         brick.innerHTML = i;
@@ -99,7 +100,7 @@ function _move(n){
             if (step >= Math.pow(2, latest_usable_num)){
                 is_moving = false;
             }
-        },100*(t)+100);
+        },interval*(t)+interval);
     }
 }
 
@@ -122,7 +123,7 @@ function Prev(){
         stuff_index[getbox] += 1;
         stuff[getbox][stuff_index[getbox]] = stuff[givebox][stuff_index[givebox]];
         stuff_index[givebox] -= 1;
-        get.appendChild(givething);
+        get.append(givething);
     }
 }
 function Next(){
@@ -140,7 +141,7 @@ function Next(){
         stuff_index[getbox] += 1;
         stuff[getbox][stuff_index[getbox]] = stuff[givebox][stuff_index[givebox]];
         stuff_index[givebox] -= 1;
-        get1.appendChild(givething);
+        get1.append(givething);
         document.getElementById("step").innerHTML = "第" + step + "步";
         step += 1;
     }
